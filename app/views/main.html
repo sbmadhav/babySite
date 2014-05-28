@@ -15,8 +15,7 @@
     <!-- Collect the nav links, forms, and other content for toggling -->
     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
       <ul class="nav navbar-nav pull-right">
-        <li class="active"><a href="#">Home</a></li>
-        <li><a href="#">Product</a></li>        
+        <li><a href="#">Login</a></li>              
         <li><a href="#">Contact Us</a></li>        
       </ul>
     </div><!-- /.navbar-collapse -->
@@ -24,13 +23,24 @@
 </nav>
 </div>
 
-<div class="jumbotron">
-  <h1>Daycare App<h1>
-  <p class="lead">
-    <img src="images/preschool-clipart.gif" alt="Daycare"><br><br>
-    Get rid of kids' tension. Rely on us. 
-  </p>
-  <p><a class="btn btn-lg btn-success" ng-href="#">Splendid!<span class="glyphicon glyphicon-ok"></span></a></p>
+<div class="row jumbotron">
+  <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
+	<div>
+	  <h1>Daycare App</h1>
+	  <p class="lead">
+		<img src="images/preschool-clipart.gif" alt="Daycare"/><br><br>
+		Get rid of kids' tension. Rely on us. 
+	  </p>
+	  <p><a class="btn btn-lg btn-success" ng-href="#">Splendid!<span class="glyphicon glyphicon-ok"></span></a></p>
+	</div>
+  </div>
+  <div class="small text-left col-xs-6 col-sm-6 col-md-6 col-lg-6" ng-controller = "BroadCastController">
+  <marquee direction="up">
+	<li ng-repeat="msg in bcastmsgs"> 
+		{{msg.text}}		 		
+	</li>	
+  </marquee>
+  </div>  
 </div>
 <div class="container">
   <div class="row baby-desc">
@@ -51,16 +61,10 @@
     </div>
   </div>
 </div>
-<div class="jumbotron">
-  <h1>'Allo, 'Allo!</h1>
-  <p class="lead">
-    Always a pleasure scaffolding your apps.
-  </p>
-</div>
-<!--
+
 <div class="footer">
   <div class="container">
     <p><span class="glyphicon glyphicon-plane"></span>Team Innovation</p>
   </div>
 </div>
--->
+

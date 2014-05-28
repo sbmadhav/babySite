@@ -28,6 +28,10 @@ body {
 
 
 
+/*pranoy's code*/
+marquee {
+	height: 20em;
+}
 
 
 /* Everything but the jumbotron gets side spacing for mobile first views */
