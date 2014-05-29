@@ -9,62 +9,69 @@
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
       </button>
-      <a class="navbar-brand" href="#">Brand</a>
+      <a class="navbar-brand" href="#">Child DayCare</a>
     </div>
 
     <!-- Collect the nav links, forms, and other content for toggling -->
     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
       <ul class="nav navbar-nav pull-right">
-        <li><a href="#">Login</a></li>              
-        <li><a href="#">Contact Us</a></li>        
+        <li class="active"><a href="#/adminMain">Manage Records</a></li>
+        <li><a href="#/adminMsg">Message</a></li>       
       </ul>
     </div><!-- /.navbar-collapse -->
   </div><!-- /.container-fluid -->
 </nav>
 </div>
 
-<div class="row jumbotron">
-  <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
-	<div>
-	  <h1>Daycare App</h1>
-	  <p class="lead">
-		<img src="images/preschool-clipart.gif" alt="Daycare"/><br><br>
-		Get rid of kids' tension. Rely on us. 
-	  </p>
-	  <p><a class="btn btn-lg btn-success" ng-href="#">Splendid!<span class="glyphicon glyphicon-ok"></span></a></p>
-	</div>
-  </div>
-  <div class="small text-left col-xs-6 col-sm-6 col-md-6 col-lg-6" ng-controller = "BroadCastController">
-  <marquee direction="up">
-	<li ng-repeat="msg in bcastmsgs"> 
-		{{msg.text}}		 		
-	</li>	
-  </marquee>
-  </div>  
-</div>
-<div class="container">
+<div class="container admin-view">
   <div class="row baby-desc">
-    <div class="col-md-4">
-        <img class="img-responsive img-center" src="images/baby1.jpg" />
-        <h4>What do we offer?</h4>
-        <p class="text-muted">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed pellentesque purus risus, id ultricies tellus gravida non. Etiam sollicitudin placerat pellentesque. Quisque non laoreet eros. Etiam a sem ut purus dapibus interdum. Suspendisse tincidunt sem sed est lobortis, ut tincidunt ipsum pharetra. Morbi porta pellentesque diam, quis ultricies risus cursus ac. Fusce vestibulum mattis lorem at fermentum. Nam enim augue, bibendum eget dictum id, vestibulum at libero.</p>
-    </div>
-    <div class="col-md-4">
-      <img class="img-responsive" src="images/baby2.jpg" />
-      <h4>Why do we offer?</h4>
-        <p class="text-muted">Praesent faucibus cursus aliquet. Quisque sit amet aliquam libero. Vestibulum facilisis pulvinar justo eget volutpat. Nullam luctus ut tortor quis pulvinar. Nunc a semper dui. Proin posuere tincidunt ultricies. Morbi vulputate tempor nunc vestibulum vestibulum. Vivamus bibendum condimentum purus, eget tincidunt lorem porttitor eget. Praesent sollicitudin ac ligula quis volutpat. Mauris eu mollis ante, ut tincidunt justo. Donec molestie suscipit metus, non cursus nibh interdum et.</p>
-    </div>
-    <div class="col-md-4">
-      <img class="img-responsive" src="images/baby3.jpg" />
-      <h4>How do we offer?</h4>
-        <p class="text-muted">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed pellentesque purus risus, id ultricies tellus gravida non. Etiam sollicitudin placerat pellentesque. Quisque non laoreet eros. Etiam a sem ut purus dapibus interdum. Suspendisse tincidunt sem sed est lobortis, ut tincidunt ipsum pharetra. Morbi porta pellentesque diam, quis ultricies risus cursus ac. Fusce vestibulum mattis lorem at fermentum. Nam enim augue, bibendum eget dictum id, vestibulum at libero.</p>
+    <div class="col-md-12">
+      <div class="row">
+        <div class="col-md-6">
+          <p class="label label-info sort-lbl">Sort the results by:</p>
+          <div class="btn-group btn-group-justified sort-menu">
+            <div class="btn-group">
+              <button type="button" class="btn btn-default active">Age</button>
+            </div>
+            <div class="btn-group">
+              <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">
+                Gender <span class="caret"></span>
+              </button>
+              <ul class="dropdown-menu" role="menu">
+                <li><a href="#">Boy<span class="badge">{{children.length}}</span></a></li>
+                <li class="divider"></li>
+                <li><a href="#">Girl<span class="badge">{{children.length}}</span></a></li>
+              </ul>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-6">
+          <p class="label label-info sort-lbl">Search By :</p>
+          <div class="row search-menu">
+            <div class="child-search">
+              <div class="input-group">
+                <span class="input-group-addon">Name</span>
+                <input class="form-control" type="text" ng-model="srChildName" />
+              </div>
+            </div>
+            <div class="child-search">
+              <div class="input-group">
+                <span class="input-group-addon">Location</span>
+                <input class="form-control" type="text" ng-model="srChildLocation" />
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <ul class="list-group children-record">
+        <li class="list-group-item" ng-repeat="child in children | filter:srChildName | filter:srChildLocation" id={{child.uid}} ng-click="slectChild($event);" >{{child.name}} <span class="text-muted pull-right">{{child.location}}</span></li>
+      </ul>
     </div>
   </div>
 </div>
 
-<div class="footer">
+<div class="footer navbar navbar-default navbar-fixed-bottom">
   <div class="container">
-    <p><span class="glyphicon glyphicon-plane"></span>Team Innovation</p>
+    <p><span class="glyphicon glyphicon-star"></span>Team ChildDayCare | &copy |MAdhav|Shouvik|Pranoy</p>
   </div>
 </div>
-
