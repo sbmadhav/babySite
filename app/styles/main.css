@@ -7,8 +7,12 @@ body {
 
 /*shouvik's code*/
 
-.baby-desc img{margin: 0 auto;}
-.baby-desc h4{text-align: center;;}
+.admin-view{padding-top: 80px;}
+.sort-lbl{padding: 10px;}
+.sort-menu,.search-menu{margin: 23px 0;}
+.badge{margin: 0 0 0 7px;}
+.child-search{width: 50%;float: left;}
+.baby-msg{margin-bottom: 23px;}
 
 
 
@@ -25,13 +29,6 @@ body {
 
 
 
-
-
-
-/*pranoy's code*/
-marquee {
-	height: 20em;
-}
 
 
 /* Everything but the jumbotron gets side spacing for mobile first views */
