@@ -1,20 +1,21 @@
 'use strict';
-
-angular
+/*global $:false */
+var app = angular
   .module('angNewsApp', [
     'ngCookies',
     'ngResource',
     'ngSanitize',
-    'ngRoute'
-  ])
-  .config(function ($routeProvider) {
+    'ngRoute',
+    'firebase'
+  ]);
+  app.config(function ($routeProvider) {
     $routeProvider
       .when('/', {
-        templateUrl: 'views/main.html',
+        templateUrl: 'views/home.html',
         controller: 'MainCtrl'
       })
       .when('/adminMain',{
-        templateUrl: 'views/main.html',
+        templateUrl: 'views/adminMain.html',
         controller: 'MainCtrl'
       })
       .when('/adminMsg',{
