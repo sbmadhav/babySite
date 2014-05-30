@@ -5,14 +5,17 @@ var app = angular
     'ngCookies',
     'ngResource',
     'ngSanitize',
-    'ngRoute',
-    'firebase'
+    'ngRoute'
   ]);
   app.config(function ($routeProvider) {
     $routeProvider
       .when('/', {
         templateUrl: 'views/home.html',
-        controller: 'MainCtrl'
+        controller: 'BroadCastController'
+      })
+	  .when('/Login',{
+        templateUrl: 'views/Login.html',
+        controller: 'LoginCtrl'
       })
       .when('/adminMain',{
         templateUrl: 'views/adminMain.html',
