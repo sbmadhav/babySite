@@ -5,7 +5,8 @@ var app = angular
     'ngCookies',
     'ngResource',
     'ngSanitize',
-    'ngRoute'
+    'ngRoute',
+    'firebase'
   ]);
   app.config(function ($routeProvider) {
     $routeProvider
@@ -18,12 +19,10 @@ var app = angular
         controller: 'LoginCtrl'
       })
       .when('/adminMain',{
-        templateUrl: 'views/adminMain.html',
-        controller: 'MainCtrl'
+        templateUrl: 'views/adminMain.html'
       })
       .when('/adminMsg',{
-        templateUrl: 'views/adminMessage.html',
-        controller: 'MainCtrl'
+        templateUrl: 'views/adminMessage.html'
       })
       .otherwise({
         redirectTo: '/'
