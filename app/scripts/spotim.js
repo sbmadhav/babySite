@@ -8,4 +8,4 @@
     }
 
     e.spotId = "0ee147b0fdd69c126798941cff7eea09", e.spotName = "lobby", e.allowDesktop = !0, e.allowMobile = !0, e.containerId = "spot-im-root", s()
-}(window.SPOTIM = {}, document, "http://www.spot.im/embed/scripts/launcher.js");
+}(window.SPOTIM = {}, document, "https://www.spot.im/embed/scripts/launcher.js");

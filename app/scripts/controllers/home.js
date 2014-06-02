@@ -91,4 +91,20 @@ app.controller('LoginController', ['$scope', function($scope) {
 	$("#pwd").val("");
     $scope.modalShown = !$scope.modalShown;
   };
+  $scope.socialAuthUser = function(provider) {
+      var chatRef = new Firebase('https://daycareapp.firebaseio.com');
+      var auth = new FirebaseSimpleLogin(chatRef, function(error, user) {
+          if (error) {
+              // an error occurred while attempting login
+              console.log(error);
+          } else if (user) {
+              // user authenticated with Firebase
+              console.log(user);
+              console.log('User ID: ' + user.uid + ', Provider: ' + user.provider);
+          } else {
+              // user is logged out
+          }
+      });
+      auth.login(provider);
+  };
 }]);
