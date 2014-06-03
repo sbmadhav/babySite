@@ -42,7 +42,8 @@ app.controller('ChildrenController', ['$scope','childrenService',function ($scop
         $scope.babyMessage='';
     };
 
-    $scope.pickUp=function(){
+    $scope.pickUpDrop=function(pick,drop){
+        //alert('elo');
         var selectedChildren=$scope.childTopickDrop;
         if(selectedChildren.length!=0){
             for(var i=0;i<selectedChildren.length;i++){
@@ -82,6 +83,13 @@ app.factory('adminService', ['$firebase', function($firebase) {
 }]);
 app.controller('AdminController', ['$scope','adminService',function ($scope,service) {
     service.$bind($scope, 'admin');
+    $scope.removeAdmin=function(delIndex){
+        $scope.admin.adminArr.splice(delIndex,1);
+    }
+    $scope.addMember=function(){
+        //$scope.NewMember=$scope.NewMember.reverse();
+        $scope.admin.adminArr.push($scope.NewMember);
+    }
 }]);
 //binding messages data
 app.factory('messagesService', ['$firebase', function($firebase) {

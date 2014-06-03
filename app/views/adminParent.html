@@ -15,37 +15,39 @@
     <!-- Collect the nav links, forms, and other content for toggling -->
     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
       <ul class="nav navbar-nav pull-right">
-        <li class="active"><a href="#/adminMain">Manage Records</a></li>
-        <li><a href="#/adminMsg">Message</a></li>       
-        <li><a href="#/adminParent">Admin Control</a></li>       
+        <li><a href="#/adminMain">Manage Records</a></li>
+        <li><a href="#/adminMsg">Message</a></li>              
+        <li class="active"><a href="#/adminParent">Admin Control</a></li>  
       </ul>
     </div><!-- /.navbar-collapse -->
   </div><!-- /.container-fluid -->
 </nav>
 </div>
 
-<div class="container admin-view" ng-controller="ChildrenController">
+<div class="container admin-view" ng-controller="AdminController">
   <div class="row baby-desc">
     <div class="col-md-12">
       <div class="row">
         <div class="col-md-6">
-          <p class="label label-info sort-lbl">Sort the results by:</p>
-          <div class="btn-group btn-group-justified sort-menu">
-            <div class="btn-group">
-              <a href="javascript:void(0);" class="btn btn-default active" ng-click="sortChild='age';reverse=!reverse;changeButtonColor($event);">Age</a>
-            </div>
-            <div class="btn-group">
-              <a href="javascript:void(0);" class="btn btn-default dropdown-toggle" data-toggle="dropdown">
-                Gender <span class="caret"></span>
-              </a>
-              <ul class="dropdown-menu" role="menu">
-                <li ng-click="childGender='M'"><a href="javascript:void(0);">Boy<span class="badge">{{children.childrenArr.length}}</span></a></li>
-                <li class="divider"></li>
-                <li ng-click="childGender='G'"><a href="javascript:void(0);">Girl<span class="badge">{{children.childrenArr.length}}</span></a></li>
-              </ul>
-            </div>
+          <p class="label label-info sort-lbl">Add new Member  :</p>
+          <div class="row search-menu well">
+              <div class="input-group">
+                <span class="input-group-addon">Name</span>
+                <input class="form-control" type="text" ng-model="NewMember.Name" />
+              </div>
+              <div class="input-group">
+                <span class="input-group-addon">Location</span>
+                <input class="form-control" type="text" ng-model="NewMember.Location" />
+              </div>
+              <div class="input-group">
+                <span class="input-group-addon">Age</span>
+                <input class="form-control" type="text" ng-model="NewMember.Age" />
+              </div>
+              <a href="javascript:void(0);" class="btn btn-default pull-right" ng-click="addMember();">Add</a>
           </div>
         </div>
+      </div>
+      <div class="row">
         <div class="col-md-6">
           <p class="label label-info sort-lbl">Search By :</p>
           <div class="row search-menu">
@@ -65,12 +67,8 @@
         </div>
       </div>
       <ul class="list-group children-record">
-        <li class="list-group-item" ng-repeat="child in children.childrenArr | filter:srChildName | filter:srChildLocation | orderBy:sortChild:reverse "  ng-click="slectChild($event);" id={{child.uid}} >{{child.name}} <span class="badge badgeBgRed">{{child.picked}} </span> <span class="text-muted pull-right">{{child.location}}</span></li>
+        <li class="list-group-item" ng-repeat="admin in admin.adminArr | filter:srChildName | filter:srChildLocation "  ng-click="slectChild($event);" id={{admin.uid}} >{{admin.name}} <span class="text-muted pull-right">{{admin.location}}</span><a href="javascript:void(0);" ng-click="removeAdmin($index);"><span class="glyphicon glyphicon-minus"></span></a></li>
       </ul>
-      <div class="pickDrop pull-right">
-        <a class="btn btn-default btn-success" href="javascript:void(0);" ng-click="pickUpDrop(true,false);">Pick Up</a>
-        <a class="btn btn-default btn-danger" href="javascript:void(0);" ng-click="pickUpDrop(false,true);">Drop</a>
-      </div>
     </div>
   </div>
 </div>

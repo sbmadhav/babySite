@@ -24,6 +24,9 @@ var app = angular
       .when('/adminMsg',{
         templateUrl: 'views/adminMessage.html'
       })
+      .when('/adminParent',{
+        templateUrl: 'views/adminParent.html'
+      })
       .otherwise({
         redirectTo: '/'
       });
