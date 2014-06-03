@@ -2,11 +2,12 @@
 /*global $:false */
 var app = angular
   .module('angNewsApp', [
+	'directives',
     'ngCookies',
     'ngResource',
     'ngSanitize',
     'ngRoute',
-    'firebase'
+	'firebase'
   ]);
   app.config(function ($routeProvider) {
     $routeProvider
@@ -24,13 +25,9 @@ var app = angular
       .when('/adminMsg',{
         templateUrl: 'views/adminMessage.html'
       })
-      .when('/manageAdmin',{
-        templateUrl: 'views/adminParent.html'
-      })
-      .when('/manageMember',{
-        templateUrl: 'views/adminManageMember.html'
-      })
       .otherwise({
         redirectTo: '/'
       });
   });
+  
+  var userJson = [];
