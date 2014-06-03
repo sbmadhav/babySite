@@ -24,8 +24,11 @@ var app = angular
       .when('/adminMsg',{
         templateUrl: 'views/adminMessage.html'
       })
-      .when('/adminParent',{
+      .when('/manageAdmin',{
         templateUrl: 'views/adminParent.html'
+      })
+      .when('/manageMember',{
+        templateUrl: 'views/adminManageMember.html'
       })
       .otherwise({
         redirectTo: '/'

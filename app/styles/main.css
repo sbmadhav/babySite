@@ -14,8 +14,8 @@ body {
 .child-search{width: 50%;float: left;}
 .baby-msg{margin-bottom: 23px;}
 .well .input-group{margin-bottom: 17px;}
-
-
+.manage-records{margin: 23px 0;}
+.babymsg-details{margin: 10px 0;}
 
 
 
@@ -51,6 +51,7 @@ body {
   padding-top: 19px;
   color: #777;
   border-top: 1px solid #e5e5e5;
+  margin-bottom: 0;
 }
 
 

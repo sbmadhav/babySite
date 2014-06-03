@@ -55,7 +55,25 @@ app.controller('ChildrenController', ['$scope','childrenService',function ($scop
             }
         }
     }
-
+    $scope.UpdateMemberArr={}
+    var storeArrpos=0;
+    $scope.updateChildInfoView=function(event){
+        for(var i=0;i<$scope.children.childrenArr.length;i++){
+            if($(event.target).attr('id')==$scope.children.childrenArr[i].uid){
+                storeArrpos=i;
+                //alert($scope.children.childrenArr[i].name);
+                $scope.UpdateMemberArr.uid=$scope.children.childrenArr[i].uid;
+                $scope.UpdateMemberArr.name=$scope.children.childrenArr[i].name;
+                $scope.UpdateMemberArr.location=$scope.children.childrenArr[i].location;
+                $scope.UpdateMemberArr.age=$scope.children.childrenArr[i].age;
+            }
+        }
+    }
+    $scope.updateMember=function(){
+        $scope.children.childrenArr[storeArrpos].name=$scope.UpdateMemberArr.name
+        $scope.children.childrenArr[storeArrpos].location=$scope.UpdateMemberArr.location;
+        $scope.children.childrenArr[storeArrpos].age=$scope.UpdateMemberArr.age;
+    }
     $scope.check=function(){alert($scope.childGender);}
 
     $scope.$watch('childTopickDrop',function(){
@@ -89,6 +107,7 @@ app.controller('AdminController', ['$scope','adminService',function ($scope,serv
     $scope.addMember=function(){
         //$scope.NewMember=$scope.NewMember.reverse();
         $scope.admin.adminArr.push($scope.NewMember);
+        $scope.NewMember={};
     }
 }]);
 //binding messages data
