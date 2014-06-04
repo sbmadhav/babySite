@@ -4,7 +4,14 @@
   'use strict';
 // Comment below for js hint to ignore issues if any and render the page
 /*global $:false */
-
+//creating directive
+app.directive('BroadCastMessage',function(){
+    return{
+        restrict:'AE',
+        replace: 'true',
+        template: '<h3>Hello World!!</h3>'
+    };
+});
 //binding children data
 app.factory('childrenService', ['$firebase', function($firebase) {
     var ref = new Firebase('https://daycareapp.firebaseio.com/children');
