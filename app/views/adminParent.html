@@ -33,15 +33,15 @@
           <div class="row search-menu well">
               <div class="input-group">
                 <span class="input-group-addon">Name</span>
-                <input class="form-control" type="text" ng-model="NewMember.Name" />
+                <input class="form-control" type="text" ng-model="NewMember.name" />
               </div>
               <div class="input-group">
                 <span class="input-group-addon">Location</span>
-                <input class="form-control" type="text" ng-model="NewMember.Location" />
+                <input class="form-control" type="text" ng-model="NewMember.location" />
               </div>
               <div class="input-group">
                 <span class="input-group-addon">Age</span>
-                <input class="form-control" type="text" ng-model="NewMember.Age" />
+                <input class="form-control" type="text" ng-model="NewMember.age" />
               </div>
               <a href="javascript:void(0);" class="btn btn-default pull-right" ng-click="addMember();">Add</a>
           </div>
@@ -67,7 +67,7 @@
         </div>
       </div>
       <ul class="list-group children-record">
-        <li class="list-group-item" ng-repeat="admin in admin.adminArr | filter:srChildName | filter:srChildLocation "  ng-click="slectChild($event);" id={{admin.uid}} >{{admin.name}} <span class="text-muted pull-right">{{admin.location}}</span><a href="javascript:void(0);" ng-click="removeAdmin($index);"><span class="glyphicon glyphicon-minus"></span></a></li>
+        <li class="list-group-item" ng-repeat="admin in admin.adminArr"   id={{admin.uid}} >{{admin.name}} <span class="text-muted pull-right">{{admin.location}}</span><a href="javascript:void(0);" ng-click="removeAdmin($index);"><span class="glyphicon glyphicon-minus"></span></a></li>
       </ul>
     </div>
   </div>
