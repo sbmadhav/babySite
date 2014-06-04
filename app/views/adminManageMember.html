@@ -15,9 +15,9 @@
     <!-- Collect the nav links, forms, and other content for toggling -->
     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
       <ul class="nav navbar-nav pull-right">
-        <li class="active"><a href="#/adminMain">Manage Records</a></li>
-        <li><a href="#/adminMsg">Message</a></li>       
-        <li><a href="#/manageAdmin">Admin Control</a></li>       
+        <li><a href="#/adminMain">Manage Records</a></li>
+        <li><a href="#/adminMsg">Message</a></li>              
+        <li class="active"><a href="#/manageAdmin">Admin Control</a></li>  
       </ul>
     </div><!-- /.navbar-collapse -->
   </div><!-- /.container-fluid -->
@@ -29,23 +29,38 @@
     <div class="col-md-12">
       <div class="row">
         <div class="col-md-6">
-          <p class="label label-info sort-lbl">Sort the results by:</p>
-          <div class="btn-group btn-group-justified sort-menu">
+          <p class="label label-info sort-lbl">Manage Records  :</p>
+          <div class="btn-group btn-group-justified manage-records">
             <div class="btn-group">
-              <a href="javascript:void(0);" class="btn btn-default active" ng-click="sortChild='age';reverse=!reverse;changeButtonColor($event);">Age</a>
+              <a href="#/manageAdmin" class="btn btn-default">Manage Admins</a>
             </div>
             <div class="btn-group">
-              <a href="javascript:void(0);" class="btn btn-default dropdown-toggle" data-toggle="dropdown">
-                Gender <span class="caret"></span>
-              </a>
-              <ul class="dropdown-menu" role="menu">
-                <li ng-click="childGender='M'"><a href="javascript:void(0);">Boy<span class="badge">{{children.childrenArr.length}}</span></a></li>
-                <li class="divider"></li>
-                <li ng-click="childGender='G'"><a href="javascript:void(0);">Girl<span class="badge">{{children.childrenArr.length}}</span></a></li>
-              </ul>
+              <a  href="#/manageMember" class="btn btn-default active">Manage Children Records</a>
             </div>
           </div>
+          <p class="label label-info sort-lbl">Update Member Information  :</p>
+          <div class="row search-menu well">
+              <div class="input-group">
+                <span class="input-group-addon">UID</span>
+                <input class="form-control" type="text" ng-model="UpdateMemberArr.uid" disabled />
+              </div>
+              <div class="input-group">
+                <span class="input-group-addon">Name</span>
+                <input class="form-control" type="text" ng-model="UpdateMemberArr.name" />
+              </div>
+              <div class="input-group">
+                <span class="input-group-addon">Location</span>
+                <input class="form-control" type="text" ng-model="UpdateMemberArr.location" />
+              </div>
+              <div class="input-group">
+                <span class="input-group-addon">Age</span>
+                <input class="form-control" type="text" ng-model="UpdateMemberArr.age" />
+              </div>
+              <a href="javascript:void(0);" class="btn btn-default pull-right" ng-click="updateMember();">Update</a>
+          </div>
         </div>
+      </div>
+      <div class="row">
         <div class="col-md-6">
           <p class="label label-info sort-lbl">Search By :</p>
           <div class="row search-menu">
@@ -65,17 +80,13 @@
         </div>
       </div>
       <ul class="list-group children-record">
-        <li class="list-group-item" ng-repeat="child in children.childrenArr | filter:srChildName | filter:srChildLocation | orderBy:sortChild:reverse "  ng-click="slectChild($event);" id={{child.uid}} >{{child.name}} <span class="badge badgeBgRed">{{child.picked}} </span> <span class="text-muted pull-right">{{child.location}}</span></li>
+        <li class="list-group-item" ng-repeat="child in children.childrenArr | filter:srChildName | filter:srChildLocation"  ng-click="slectChild($event);updateChildInfoView($event);" id={{child.uid}} >{{child.name}} <span class="badge badgeBgRed">{{child.picked}} </span> <span class="text-muted pull-right">{{child.location}}</span></li>
       </ul>
-      <div class="pickDrop pull-right">
-        <a class="btn btn-default btn-success" href="javascript:void(0);" ng-click="pickUpDrop(true,false);">Pick Up</a>
-        <a class="btn btn-default btn-danger" href="javascript:void(0);" ng-click="pickUpDrop(false,true);">Drop</a>
-      </div>
     </div>
   </div>
 </div>
 
-<div class="footer navbar navbar-default navbar-fixed-bottom" ng-click="check();">
+<div class="footer navbar navbar-default" ng-click="check();">
   <div class="container">
     <p><span class="glyphicon glyphicon-star"></span>Team ChildDayCare | &copy |MAdhav|Shouvik|Pranoy</p>
   </div>

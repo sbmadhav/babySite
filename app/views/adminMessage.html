@@ -17,7 +17,7 @@
       <ul class="nav navbar-nav pull-right">
         <li><a href="#/adminMain">Manage Records</a></li>
         <li class="active"><a href="#/adminMsg">Message</a></li>        
-        <li><a href="#/adminParent">Admin Control</a></li>        
+        <li><a href="#/manageAdmin">Admin Control</a></li>        
       </ul>
     </div><!-- /.navbar-collapse -->
   </div><!-- /.container-fluid -->
@@ -29,10 +29,10 @@
     <div class="col-md-4">
       <div class="btn-group btn-group-justified">
         <div class="btn-group">
-          <button type="button" class="btn btn-default active">Broadcast</button>
+          <a href="javascript:void(0);" class="btn btn-default active">Broadcast</a>
         </div>
         <div class="btn-group">
-          <button type="button" class="btn btn-default">Personal</button>
+          <a href="javascript:void(0);" class="btn btn-default">Personal</a>
         </div>
       </div>
     </div>
@@ -41,6 +41,10 @@
     <div class="col-md-6">
       <div class="babymsg-details">
         <textarea class="form-control" row="8"  placeholder="Message" ng-model="babyMessage"></textarea>
+      </div>
+      <div class="babymsg-details input-group">
+        <span class="input-group-addon">Upload Image</span>
+        <input class="form-control" type="file" />
       </div>
         <button type="button" class="btn btn-success pull-right" ng-click="broadcastMsg();">BroadCast</button>
     </div>

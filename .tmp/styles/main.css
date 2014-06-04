@@ -4,12 +4,42 @@
 
 /*shouvik's code*/
 
-.baby-desc img {
-  margin: 0 auto;
+.admin-view {
+  padding-top: 80px;
 }
 
-.baby-desc h4 {
-  text-align: center;
+.sort-lbl {
+  padding: 10px;
+}
+
+.sort-menu,
+.search-menu {
+  margin: 23px 0;
+}
+
+.badge {
+  margin: 0 0 0 7px;
+}
+
+.child-search {
+  width: 50%;
+  float: left;
+}
+
+.baby-msg {
+  margin-bottom: 23px;
+}
+
+.well .input-group {
+  margin-bottom: 17px;
+}
+
+.manage-records {
+  margin: 23px 0;
+}
+
+.babymsg-details {
+  margin: 10px 0;
 }
 
 /* Everything but the jumbotron gets side spacing for mobile first views */
@@ -33,6 +63,7 @@
   padding-top: 19px;
   color: #777;
   border-top: 1px solid #e5e5e5;
+  margin-bottom: 0;
 }
 
 /* Main marketing message and sign up button */
