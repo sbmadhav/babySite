@@ -13,16 +13,93 @@
     </div>
 
     <!-- Collect the nav links, forms, and other content for toggling -->
-    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-      <ul class="nav navbar-nav pull-right">
-        <li><a href="#">Home</a></li>              
-        <li><a href="#">Contact Us</a></li>        
-      </ul>
-    </div><!-- /.navbar-collapse -->
+    <test-directive></test-directive>
+		  
+	  
+	  <div id="popover_login">
+			<form class="form-horizontal" role="form" ng-submit="normalAuth()">
+				<div class="form-group">
+				  <label for="emailId" class="col-sm-4 control-label">Email Id:</label>
+				  <div class="col-sm-8">
+					 <input type="email" required class="form-control" id="emailId"  ng-model="loginUser"
+						placeholder="Enter your email id">
+				  </div>
+			   </div>
+			   <div class="form-group">
+				  <label for="pwd" class="col-sm-4 control-label">Password:</label>
+				  <div class="col-sm-8">
+					 <input type="password" required class="form-control" id="pwd"  ng-model="loginPwd"
+						placeholder="Enter your password">
+				  </div>
+			   </div>			   
+			   <div class="form-group">
+				  <div class="col-sm-12">
+					 <button type="submit" class="btn btn-primary pull-right">Sign In</button>
+					 <button type="button" class="btn btn-default pull-right" ng-click="socialAuthUser('facebook')" formnovalidate><i class="fa fa-facebook fa-lg fb"></i></button>
+					 <button type="button" class="btn btn-default pull-right" ng-click="socialAuthUser('twitter')" formnovalidate><i class="fa fa-twitter fa-lg tw"></i></button>
+					 <button type="button" class="btn btn-default pull-right" ng-click="socialAuthUser('google')" formnovalidate><i class="fa fa-google-plus fa-lg google"></i></button>
+				  </div>
+			   </div>
+			</form>
+			<div class="small">
+				Not Registered Yet?
+				<a id="regLink" href="javascript:void(0)" ng-click="showRegister()">
+					Click here!,
+				</a>
+			</div>
+	</div>		
+	  
+	  <div id="popover_register">
+		<form class="form-horizontal" role="form" ng-submit="normalReg()">
+			<div class="form-group">
+			  <label for="emailId" class="col-sm-4 control-label">Email Id:</label>
+			  <div class="col-sm-8">
+				 <input type="email" required class="form-control" id="emailId"  ng-model="regUser"
+					placeholder="Enter your email id">
+			  </div>
+		    </div>
+			<div class="form-group">
+			  <label for="dispName" class="col-sm-4 control-label">Name:</label>
+			  <div class="col-sm-8">
+				 <input pattern="^[a-zA-Z ]*$" required class="form-control" id="dispName" title="Alphabets only" ng-model="regDispName"
+					placeholder="Enter your name">
+			  </div>
+		    </div>
+		   <div class="form-group">
+			  <label for="pwd" class="col-sm-4 control-label">Password:</label>
+			  <div class="col-sm-8">
+				 <input type="password" required class="form-control" id="pwd"  ng-model="regPwd"
+					placeholder="Enter your password">
+			  </div>
+		   </div>			
+		   <div class="form-group">
+			  <label for="pwd" class="col-sm-4 control-label">Child Id:</label>
+			  <div class="col-sm-8">
+			  <input type="text" required class="form-control" id="pwd"  ng-model="regChildId"
+				placeholder="Enter child's Id">
+		   </div>
+		   </div>		   
+		   <div class="form-group">
+			  <div class="col-sm-12">
+				 <button type="submit" class="btn btn-primary pull-right">Register</button>
+				 <button type="button" class="btn btn-default pull-right" ng-click="socialRegUser('facebook')" formnovalidate><i class="fa fa-facebook fa-lg fb"></i></button>
+				 <button type="button" class="btn btn-default pull-right" ng-click="socialRegUser('twitter')" formnovalidate><i class="fa fa-twitter fa-lg tw"></i></button>
+				 <button type="button" class="btn btn-default pull-right" ng-click="socialRegUser('google')" formnovalidate><i class="fa fa-google-plus fa-lg google"></i></button>
+			  </div>
+		   </div>
+		</form>
+		<div class="small">		
+			Already Registered?		
+			<a id="loginLink" href="javascript:void(0)" ng-click="showLogin()">
+				Click here to login!
+			</a>
+		</div>
+	  </div>	  
+   
   </div><!-- /.container-fluid -->
 </nav>
 </div>
-<div class="container" ng-controller='LoginController'>
+<div class="container">
 <div class="container">
 <div class="row jumbotron">
   <div class="col-md-6">
