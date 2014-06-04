@@ -17,7 +17,7 @@
       <ul class="nav navbar-nav pull-right">
         <li><a href="#/adminMain">Manage Records</a></li>
         <li><a href="#/adminMsg">Message</a></li>              
-        <li class="active"><a href="#/adminParent">Admin Control</a></li>  
+        <li class="active"><a href="#/manageAdmin">Admin Control</a></li>  
       </ul>
     </div><!-- /.navbar-collapse -->
   </div><!-- /.container-fluid -->
@@ -29,6 +29,15 @@
     <div class="col-md-12">
       <div class="row">
         <div class="col-md-6">
+          <p class="label label-info sort-lbl">Manage Records  :</p>
+          <div class="btn-group btn-group-justified manage-records">
+            <div class="btn-group">
+              <a href="#/manageAdmin" class="btn btn-default active">Manage Admins</a>
+            </div>
+            <div class="btn-group">
+              <a  href="#/manageMember" class="btn btn-default">Manage Children Records</a>
+            </div>
+          </div>
           <p class="label label-info sort-lbl">Add new Member  :</p>
           <div class="row search-menu well">
               <div class="input-group">
@@ -67,13 +76,13 @@
         </div>
       </div>
       <ul class="list-group children-record">
-        <li class="list-group-item" ng-repeat="admin in admin.adminArr"   id={{admin.uid}} >{{admin.name}} <span class="text-muted pull-right">{{admin.location}}</span><a href="javascript:void(0);" ng-click="removeAdmin($index);"><span class="glyphicon glyphicon-minus"></span></a></li>
+        <li class="list-group-item" ng-repeat="admin in admin.adminArr | filter:srChildName | filter:srChildLocation "  ng-click="slectChild($event);" id={{admin.uid}} >{{admin.name}} <span class="text-muted pull-right">{{admin.location}}</span><a href="javascript:void(0);" class="btn pull-right" ng-click="removeAdmin($index);"><span class="glyphicon glyphicon-minus">Delete</span></a></li>
       </ul>
     </div>
   </div>
 </div>
 
-<div class="footer navbar navbar-default navbar-fixed-bottom" ng-click="check();">
+<div class="footer navbar navbar-default" ng-click="check();">
   <div class="container">
     <p><span class="glyphicon glyphicon-star"></span>Team ChildDayCare | &copy |MAdhav|Shouvik|Pranoy</p>
   </div>

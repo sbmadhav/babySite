@@ -80,9 +80,11 @@ app.factory('adminService', ['$firebase', function($firebase) {
     var ref = new Firebase('https://daycareapp.firebaseio.com/admin');
     return $firebase(ref);
 }]);
+
 app.controller('AdminController', ['$scope','$firebase',function ($scope,$firebase) {
     var ref = new Firebase('https://daycareapp.firebaseio.com/admin');
     $firebase(ref).$bind($scope, 'admin');
+
 }]);
 //binding messages data
 app.factory('messagesService', ['$firebase', function($firebase) {
@@ -101,3 +103,30 @@ app.controller('AuxController', ['$scope','auxService',function ($scope,service)
     service.$bind($scope, 'aux');
 }]);
 
+$.getJSON( "scripts/json/users.json", function( data ) {
+  console.log(data);
+  userJson = data;
+  }).done(function() {
+    console.log( "second success" );
+  })
+  .fail(function( jqxhr, textStatus, error ) {
+    var err = textStatus + ", " + error;
+    console.log( "Request Failed: " + err );
+});
+
+/*app.factory('LoginService', ['$firebase', function($firebase) {
+    var ref = new Firebase('https://daycareapp.firebaseio.com/user');
+    return $firebase(ref);
+}]);*/
+  
+app.factory('Data', function(){
+    return { DisplayName: '', ChildId: '' };
+});
+
+app.controller('FirstCtrl', function( $scope, Data ){
+    $scope.Data = Data;
+});
+
+app.controller('SecondCtrl', function( $scope, Data ){
+    $scope.Data = Data;
+});
