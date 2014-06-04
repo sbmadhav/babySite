@@ -65,7 +65,7 @@
         </div>
       </div>
       <ul class="list-group children-record">
-        <li class="list-group-item" ng-repeat="child in children.childrenArr | filter:srChildName | filter:srChildLocation | orderBy:sortChild:reverse "  ng-click="slectChild($event);" id={{child.uid}} >{{child.name}} <span class="badge badgeBgRed">{{child.picked}} </span> <span class="text-muted pull-right">{{child.location}}</span></li>
+        <li class="list-group-item" ng-repeat="child in children.childrenArr | filter:srChildName | filter:srChildLocation | orderBy:sortChild:reverse "  ng-click="slectChild($event);" id={{child.uid}} >{{child.name}} <span class="badge badgeBgRed">{{child.picked}} </span><span class="badge badgeBgRed">{{child.dropped}}</span><span class="text-muted pull-right">{{child.location}}</span></li>
       </ul>
       <div class="pickDrop pull-right">
         <a class="btn btn-default btn-success" href="javascript:void(0);" ng-click="pickUpDrop(true,false);">Pick Up</a>

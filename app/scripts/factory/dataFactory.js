@@ -7,9 +7,8 @@
 //creating directive
 app.directive('BroadCastMessage',function(){
     return{
-        restrict:'AE',
-        replace: 'true',
-        template: '<h3>Hello World!!</h3>'
+        restrict:'E',
+        templateUrl: 'views/adminParent.html'
     };
 });
 //binding children data
@@ -17,9 +16,9 @@ app.factory('childrenService', ['$firebase', function($firebase) {
     var ref = new Firebase('https://daycareapp.firebaseio.com/children');
     return $firebase(ref);
 }]);
-app.controller('ChildrenController', ['$scope','$firebase',function ($scope,$firebase) {
-    var ref = new Firebase('https://daycareapp.firebaseio.com/children');
-    $firebase(ref).$bind($scope, 'children');
+app.controller('ChildrenController', ['$scope','childrenService',function ($scope,service) {
+    service.$bind($scope, 'children');
+
     $scope.childTopickDrop=[];
     $scope.childGender;
     $scope.changeButtonColor=function(event){
@@ -49,19 +48,42 @@ app.controller('ChildrenController', ['$scope','$firebase',function ($scope,$fir
         $scope.babyMessage='';
     };
 
-    $scope.pickUp=function(){
+    $scope.pickUpDrop=function(pick,drop){
+        //alert('elo');
         var selectedChildren=$scope.childTopickDrop;
         if(selectedChildren.length!=0){
             for(var i=0;i<selectedChildren.length;i++){
                 for(var j=0;j<$scope.children.childrenArr.length;j++){
-                    if(selectedChildren[i]==$scope.children.childrenArr[j].uid && $scope.children.childrenArr[j].picked=='NotPicked'){
+                    if(pick==true && selectedChildren[i]==$scope.children.childrenArr[j].uid && $scope.children.childrenArr[j].picked=='NotPicked'){
                         $scope.children.childrenArr[j].picked='picked';
+                        $scope.children.childrenArr[j].dropped='Notdropped';
+                    }
+                    else if(drop==true && selectedChildren[i]==$scope.children.childrenArr[j].uid && $scope.children.childrenArr[j].picked=='picked'){
+                        $scope.children.childrenArr[j].dropped='dropped';
                     }
                 }
             }
         }
     }
-
+    $scope.UpdateMemberArr={}
+    var storeArrpos=0;
+    $scope.updateChildInfoView=function(event){
+        for(var i=0;i<$scope.children.childrenArr.length;i++){
+            if($(event.target).attr('id')==$scope.children.childrenArr[i].uid){
+                storeArrpos=i;
+                //alert($scope.children.childrenArr[i].name);
+                $scope.UpdateMemberArr.uid=$scope.children.childrenArr[i].uid;
+                $scope.UpdateMemberArr.name=$scope.children.childrenArr[i].name;
+                $scope.UpdateMemberArr.location=$scope.children.childrenArr[i].location;
+                $scope.UpdateMemberArr.age=$scope.children.childrenArr[i].age;
+            }
+        }
+    }
+    $scope.updateMember=function(){
+        $scope.children.childrenArr[storeArrpos].name=$scope.UpdateMemberArr.name
+        $scope.children.childrenArr[storeArrpos].location=$scope.UpdateMemberArr.location;
+        $scope.children.childrenArr[storeArrpos].age=$scope.UpdateMemberArr.age;
+    }
     $scope.check=function(){alert($scope.childGender);}
 
     $scope.$watch('childTopickDrop',function(){
@@ -87,11 +109,16 @@ app.factory('adminService', ['$firebase', function($firebase) {
     var ref = new Firebase('https://daycareapp.firebaseio.com/admin');
     return $firebase(ref);
 }]);
-
-app.controller('AdminController', ['$scope','$firebase',function ($scope,$firebase) {
-    var ref = new Firebase('https://daycareapp.firebaseio.com/admin');
-    $firebase(ref).$bind($scope, 'admin');
-
+app.controller('AdminController', ['$scope','adminService',function ($scope,service) {
+    service.$bind($scope, 'admin');
+    $scope.removeAdmin=function(delIndex){
+        $scope.admin.adminArr.splice(delIndex,1);
+    }
+    $scope.addMember=function(){
+        //$scope.NewMember=$scope.NewMember.reverse();
+        $scope.admin.adminArr.push($scope.NewMember);
+        $scope.NewMember={};
+    }
 }]);
 //binding messages data
 app.factory('messagesService', ['$firebase', function($firebase) {
@@ -110,30 +137,3 @@ app.controller('AuxController', ['$scope','auxService',function ($scope,service)
     service.$bind($scope, 'aux');
 }]);
 
-$.getJSON( "scripts/json/users.json", function( data ) {
-  console.log(data);
-  userJson = data;
-  }).done(function() {
-    console.log( "second success" );
-  })
-  .fail(function( jqxhr, textStatus, error ) {
-    var err = textStatus + ", " + error;
-    console.log( "Request Failed: " + err );
-});
-
-/*app.factory('LoginService', ['$firebase', function($firebase) {
-    var ref = new Firebase('https://daycareapp.firebaseio.com/user');
-    return $firebase(ref);
-}]);*/
-  
-app.factory('Data', function(){
-    return { DisplayName: '', ChildId: '' };
-});
-
-app.controller('FirstCtrl', function( $scope, Data ){
-    $scope.Data = Data;
-});
-
-app.controller('SecondCtrl', function( $scope, Data ){
-    $scope.Data = Data;
-});
