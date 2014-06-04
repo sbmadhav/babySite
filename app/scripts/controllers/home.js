@@ -4,17 +4,10 @@
 var regLoginClicked = false;
 
 //pranoy
-app.controller('BroadCastController', ['$scope','loginService', 'Data', function ($scope, service, Data) {
+app.controller('BroadCastController', ['$scope','loginService', 'Data', 'BroadCastMsgService', function ($scope, service, Data, bcastmsgs) {
 	  service.$bind($scope, 'userArr');
 	  $scope.Data = Data;
-	  $scope.bcastmsgs = [
-		{text:'Praesent faucibus cursus aliquet. Quisque sit amet aliquam libero.'},
-		{text:'Morbi vulputate tempor nunc vestibulum vestibulum. Vivamus bibendum condimentum purus, eget tincidunt lorem porttitor eget.'},
-		{text:'Praesent sollicitudin ac ligula quis volutpat. Mauris eu mollis ante, ut tincidunt justo.'},
-		{text:'Nunc a semper dui. Proin posuere tincidunt ultricies. '},
-		{text:'Vestibulum facilisis pulvinar justo eget volutpat. Nullam luctus ut tortor quis pulvinar'},
-		{text:'Morbi vulputate tempor nunc vestibulum vestibulum. Vivamus bibendum condimentum purus, eget tincidunt lorem porttitor eget.'}	
-	  ];
+	  $scope.bcastmsgs = bcastmsgs;
 	 
 	  /*$scope.addTodo = function() {
 		$scope.todos.push({text:$scope.todoText, done:false});
@@ -217,8 +210,10 @@ app.directive('modalDialog', function() {
   };
 });
 
-app.controller('LoginCtrl', function ($scope, Data) {
+app.controller('LoginCtrl', ['$scope', 'Data', 'personalMsgService', 'BroadCastMsgService', function ($scope, Data, service, bCastMsgs) {
   $scope.Data = Data;
+  $scope.bcastmsgs = bCastMsgs;
+  service.$bind($scope, 'messages');
   console.log($scope.Data.DisplayName);
   $scope.modalShown = false;
   $scope.toggleModal = function() {
@@ -227,6 +222,11 @@ app.controller('LoginCtrl', function ($scope, Data) {
     $scope.modalShown = !$scope.modalShown;
   };
   
-  
-  
+  $scope.getPersonalMessages = function() {
+	var personalMsgArr = [];
+	$.each($scope.messages, function( keyUser, val ) {
+	if ($scope.Data.ChildId == val.id) {
+		personalMsgArr.push(val.text);
+	}
+  };  
 });
