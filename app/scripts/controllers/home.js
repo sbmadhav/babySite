@@ -1,9 +1,11 @@
 'use strict';
 /*global $:false */
 
+var regLoginClicked = false;
 
 //pranoy
-app.controller('BroadCastController', function ($scope) {
+app.controller('BroadCastController', function ($scope, Data) {
+	  $scope.Data = Data;
 	  $scope.bcastmsgs = [
 		{text:'Praesent faucibus cursus aliquet. Quisque sit amet aliquam libero.'},
 		{text:'Morbi vulputate tempor nunc vestibulum vestibulum. Vivamus bibendum condimentum purus, eget tincidunt lorem porttitor eget.'},
@@ -58,9 +60,117 @@ app.controller('BroadCastController', function ($scope) {
 			//$(this).textEffect('slide');
 			//$(this).textEffect('dropdown');
 		});
-	}, 500);    
+	}, 500);  
+	
+	
+	$('body').on('click', function (e) {
+		$('[data-toggle=popover]').each(function () {
+			// hide any open popovers when the anywhere else in the body is clicked
+			if (!$(this).is(e.target) && $(this).has(e.target).length === 0 && $('.popover').has(e.target).length === 0 
+				&& !$(e.target).is("#loginLink") && !$(e.target).is("#regLink")) {
+					$(this).popover('hide');
+			}
+		});
+	});
 });
 
+
+var directives = angular.module('directives', []);
+directives.directive('testDirective', function($compile, $location) {
+    return {
+        restrict: 'EAC',
+        template: "<div class='collapse navbar-collapse' id='bs-example-navbar-collapse-1'>" +
+					"<ul class='nav navbar-nav pull-right'>" +
+					"	<li><a href='#'>Home</a></li>" + 
+					"	<li><a id='login' class='login' data-toggle='popover'>Login</a></li> " + 
+					"	<li><a href='#'>Contact Us</a></li>      </ul> </div>  " +
+					  
+                  "<div id='pop-over-content' style='display:none'><button class='btn btn-primary' ng-click='testFunction()'>Ok</button></div>",
+        link: function(scope, elements, attrs) {
+            $("#login").popover({
+                'placement': 'bottom',
+                'trigger': 'click',
+                'html': true,
+                'container': 'body',
+                'content': function() {
+                    return $compile($("#popover_login").html())(scope);
+                }
+            });
+  
+            scope.showRegister = function() {
+				regLoginClicked = true;			
+				$(".popover-content").html(
+					function() {
+						return $compile($("#popover_register").html())(scope);
+					}
+				);				
+			}		
+			
+			scope.showLogin = function() {
+				regLoginClicked	= true;
+				$(".popover-content").html(
+					function() {
+						return $compile($("#popover_login").html())(scope);
+					}
+				);				
+			}
+			
+			scope.socialAuthUser = function(provider) {
+				  var chatRef = new Firebase('https://daycareapp.firebaseio.com');
+				  var auth = new FirebaseSimpleLogin(chatRef, function(error, user) {
+					  if (error) {
+						  // an error occurred while attempting login
+						  console.log(error);
+					  } else if (user) {
+						$.each( userJson, function( keyUser, val ) {
+							$.each( val, function( index,  value) {								
+								$.each( value, function( key,  values) {
+									switch (key) {
+										case "facebook": if (values == user.id) {
+															console.log(value.childId);
+															scope.Data.DisplayName = value.displayName;	
+															$("#login").popover('hide');																
+															$location.url('/Login');
+															return false;
+														}
+														break;
+										case "google":   if (values == user.id) {
+															Data = value.displayName;
+															$("#login").popover('hide');
+															$location.url('/Login');
+															return false;
+														}
+														break;
+										case "twitter":  if (values == user.id) {
+															Data = value.displayName;
+															$("#login").popover('hide');
+															$location.url('/Login');
+															return false;
+														}
+														break;
+															
+										default: console.log("invalid");
+									}								
+									console.log(key + " " +values);
+									//items.push( "<li id='" + key + "'>" + val + "</li>" );
+								});								
+							});
+						});
+					  
+						  // user authenticated with Firebase
+						  console.log(user);
+						  console.log('User ID: ' + user.id + ', Provider: ' + user.provider);
+						  						  
+						  //if (
+					  } else {
+						  // user is logged out
+					  }
+				  });
+				  auth.login(provider);
+			  };		
+        }
+    }
+});
 
 app.directive('modalDialog', function() {
   return {
@@ -84,27 +194,16 @@ app.directive('modalDialog', function() {
   };
 });
 
-app.controller('LoginController', ['$scope', function($scope) {
+app.controller('LoginCtrl', function ($scope, Data) {
+  $scope.Data = Data;
+  console.log($scope.Data.DisplayName);
   $scope.modalShown = false;
   $scope.toggleModal = function() {
 	$("#emailId").val("");
 	$("#pwd").val("");
     $scope.modalShown = !$scope.modalShown;
   };
-  $scope.socialAuthUser = function(provider) {
-      var chatRef = new Firebase('https://daycareapp.firebaseio.com');
-      var auth = new FirebaseSimpleLogin(chatRef, function(error, user) {
-          if (error) {
-              // an error occurred while attempting login
-              console.log(error);
-          } else if (user) {
-              // user authenticated with Firebase
-              console.log(user);
-              console.log('User ID: ' + user.uid + ', Provider: ' + user.provider);
-          } else {
-              // user is logged out
-          }
-      });
-      auth.login(provider);
-  };
-}]);
+  
+  
+  
+});
