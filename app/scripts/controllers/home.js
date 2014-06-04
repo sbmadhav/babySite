@@ -225,8 +225,9 @@ app.controller('LoginCtrl', ['$scope', 'Data', 'personalMsgService', 'BroadCastM
   $scope.getPersonalMessages = function() {
 	var personalMsgArr = [];
 	$.each($scope.messages, function( keyUser, val ) {
-	if ($scope.Data.ChildId == val.id) {
-		personalMsgArr.push(val.text);
-	}
-  };  
-});
+		if ($scope.Data.ChildId == val.id) {
+			personalMsgArr.push(val.text);
+		}
+	  });  
+	};
+}]);
