@@ -1,9 +1,15 @@
 {
-	"user":[
+	"userArr":[
 		{ 
 			"facebook":"718114178253110",
 			"displayName":"Pranoy Dutta",
-			"childId":"01"
+			"childId":"C12345abcd"		
+		},
+		{
+			"emailId":"pranoy.iem@gmail.com",
+			"displayName":"Pranoy Dutta",
+			"childId":"C12345wxyz",
+			"password":"abc"
 		}
 	]
 }
