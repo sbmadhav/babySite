@@ -10,6 +10,8 @@
 
 app.controller('LoginCtrl', ['$scope', 'Data', 'dataService', function ($scope, Data, dataService) {
   $scope.Data = Data;
+  $scope.key = "NA";
+  $scope.personalKey = $scope.Data.ChildId;
   $scope.bcastmsgs = dataService.getData('message');	
   console.log($scope.Data.DisplayName);
   $scope.modalShown = false;
@@ -17,14 +19,5 @@ app.controller('LoginCtrl', ['$scope', 'Data', 'dataService', function ($scope, 
 	$("#emailId").val("");
 	$("#pwd").val("");
     $scope.modalShown = !$scope.modalShown;
-  };
-  
-  $scope.getPersonalMessages = function() {
-	var personalMsgArr = [];
-	$.each($scope.messages, function( keyUser, val ) {
-		if ($scope.Data.ChildId == val.id) {
-			personalMsgArr.push(val.text);
-		}
-	  });  
-	};
+  };  
 }]);

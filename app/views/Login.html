@@ -26,7 +26,25 @@
 <div class="container">
 <div class="row jumbotron">
   <div class="col-md-6">
-	<p>Put your messages Here</p>
+	<div class="headings lead"> Personal Messages </div>
+	  <div class="textmsgs personalmsgs">
+		  <div class="small bcastmsgs" ng-repeat="msg in bcastmsgs.messageArr | orderByPriority | filter:personalKey">
+			<li> 
+				{{msg.message}}					
+			</li>	
+			<br>
+		  </div>
+	  </div>
+	  <div class="headings lead"> Updates </div>
+		  <div class="textmsgs">
+			  <div class="small bcastmsgs" ng-repeat="msg in bcastmsgs.messageArr | orderByPriority | filter:key">
+				<li> 
+					{{msg.message}}					
+				</li>	
+				<br>
+			  </div>
+		  </div>
+	  </div>
   </div>
   <div class="text-left col-md-6">
     
