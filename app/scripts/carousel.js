@@ -1,6 +1,6 @@
 'use strict';
 /*global $:false */
-$(document).ready(function(){
+var caro=(function carousel(){
                var images=[];
                var headings=[];
                var bodyTxt=[];
@@ -74,4 +74,5 @@ $(document).ready(function(){
                     }
                   });
                           });
-               });
+return carousel;
+               })();
