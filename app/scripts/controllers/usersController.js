@@ -5,7 +5,7 @@
 'use strict';
 // Comment below for js hint to ignore issues if any and render the page
 /*global $:false */
-app.controller('BroadCastController', ['$scope', 'Data', 'dataService', function ($scope, Data, dataService) {
+app.controller('usersController', ['$scope', 'Data', 'dataService', function ($scope, Data, dataService) {
 	  $scope.key = "NA";
 	  $scope.message = dataService.getData('message');	
 	  $scope.userArr = dataService.getData('user');		  
