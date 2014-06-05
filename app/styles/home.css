@@ -36,7 +36,7 @@ body {
 /*pranoy's code*/
 .textmsgs {
 	overflow-y: overlay;
-	height: 150px;
+	height: 315px;
 	font-size: 76%;
 	/* font-weight: bold; */
 	line-height: 1em;
@@ -45,6 +45,11 @@ body {
 
 .personalmsgs {
 	color: red;
+	height: 260px;
+}
+
+.broadcastmsgs {
+	height: 295px;
 }
 
 .headings {
