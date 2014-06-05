@@ -17,14 +17,3 @@ app.factory('dataService', ['$firebase', function($firebase) {
 app.factory('Data', function() {
     return { DisplayName: '', ChildId: '' };
 });
-
-
-app.factory('BroadCastMsgService', function() {
-    return { /*[{text:'Praesent faucibus cursus aliquet. Quisque sit amet aliquam libero.'},
-     {text:'Morbi vulputate tempor nunc vestibulum vestibulum. Vivamus bibendum condimentum purus, eget tincidunt lorem porttitor eget.'},
-     {text:'Praesent sollicitudin ac ligula quis volutpat. Mauris eu mollis ante, ut tincidunt justo.'},
-     {text:'Nunc a semper dui. Proin posuere tincidunt ultricies. '},
-     {text:'Vestibulum facilisis pulvinar justo eget volutpat. Nullam luctus ut tortor quis pulvinar'},
-     {text:'Morbi vulputate tempor nunc vestibulum vestibulum. Vivamus bibendum condimentum purus, eget tincidunt lorem porttitor eget.'}]*/
-    };
-});
