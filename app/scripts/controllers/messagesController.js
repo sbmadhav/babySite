@@ -5,9 +5,9 @@
 'use strict';
 // Comment below for js hint to ignore issues if any and render the page
 /*global $:false */
-app.controller('MessagesController', ['$scope','dataService','childrenServiceDataRitr',function ($scope,dataService,childService) {
-    $scope.messagesFirebase = dataService.getData('messages');
-    $scope.messagesFirebase.$bind($scope, 'messages');
+app.controller('MessagesController', ['$scope','dataService',function ($scope,dataService) {
+    $scope.messagesFirebase = dataService.getData('message');
+    $scope.messagesFirebase.$bind($scope, 'message');
     $scope.showHideMsgBtn=true;
     $scope.NewMessage={};
     $scope.changeButtonColor=function(event){
@@ -23,6 +23,6 @@ app.controller('MessagesController', ['$scope','dataService','childrenServiceDat
         $scope.NewMessage={};
     }
     $scope.PersonalMsg=function(){
-        alert('personal');
+        //alert('personal');
     }
 }]);
