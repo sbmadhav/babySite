@@ -14,6 +14,9 @@ app.controller('LoginCtrl', ['$scope', 'Data', 'dataService', function ($scope, 
   $scope.personalKey = $scope.Data.ChildId;
   $scope.bcastmsgs = dataService.getData('message');	
   console.log($scope.Data.DisplayName);
+   $('.carousel').carousel({
+             interval: 2000
+   });
   $scope.modalShown = false;
   $scope.toggleModal = function() {
 	$("#emailId").val("");
