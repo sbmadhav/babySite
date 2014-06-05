@@ -58,35 +58,22 @@ directives.directive('testDirective', function($compile, $location) {
 							if (keyUser == "userArr") {
 								$.each( val, function( index,  value) {								
 									$.each( value, function( key,  values) {
-										switch (key) {
-											case "facebook": if (values == user.id) {
+										if (key == "facebook" || key == "google" || key == "twitter") {
+											 if (values == user.id) {
 																console.log(value.childId);
 																scope.Data.DisplayName = value.displayName;
 																scope.Data.ChildId = value.childId;															
 																$("#login").popover('hide');																
-																$location.url('/Login');
+																if (value.type == "admin") { 
+																	$location.url('/adminMain');
+																} else {									
+																	$location.url('/Login');
+																}
 																return false;
-															}
-															break;
-											case "google":   if (values == user.id) {
-																scope.Data.DisplayName = value.displayName;
-																scope.Data.ChildId = value.childId;
-																$("#login").popover('hide');
-																$location.url('/Login');
-																return false;
-															}
-															break;
-											case "twitter":  if (values == user.id) {
-																scope.Data.DisplayName = value.displayName;
-																scope.Data.ChildId = value.childId;
-																$("#login").popover('hide');
-																$location.url('/Login');
-																return false;
-															}
-															break;
-																
-											default: console.log("invalid");
-										}								
+											 }
+										}	else {
+												console.log("invalid");
+										}												
 										console.log(key + " " +values);
 										//items.push( "<li id='" + key + "'>" + val + "</li>" );
 									});								
@@ -114,7 +101,11 @@ directives.directive('testDirective', function($compile, $location) {
 									scope.Data.DisplayName = value.displayName;
 									scope.Data.ChildId = value.childId;
 									$("#login").popover('hide');
-									$location.url('/Login');
+									if (value.type == "admin") { 
+										$location.url('/adminMain');
+									} else {									
+										$location.url('/Login');
+									}
 									console.log();
 									return false;
 								}							
