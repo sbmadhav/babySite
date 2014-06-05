@@ -24,44 +24,43 @@
 </nav>
 </div>
 <div class="container">
-<div class="row jumbotron">
-  <div class="col-md-6">
-	<div class="headings lead"> Personal Messages </div>
-	  <div class="textmsgs personalmsgs">
+	<div class="row jumbotron">
+	  <div class="col-md-6">
+		<div class="headings lead"> Personal Messages </div>
+		<div class="textmsgs personalmsgs">
 		  <div class="small bcastmsgs" ng-repeat="msg in bcastmsgs.messageArr | orderByPriority | filter:personalKey">
 			<li> 
 				{{msg.message}}					
 			</li>	
 			<br>
 		  </div>
+		</div>
+		<div class="headings lead"> Updates </div>
+		<div class="textmsgs">
+		  <div class="small bcastmsgs" ng-repeat="msg in bcastmsgs.messageArr | orderByPriority | filter:key">
+			<li> 
+				{{msg.message}}					
+			</li>	
+			<br>
+		  </div>		  
+		</div>
 	  </div>
-	  <div class="headings lead"> Updates </div>
-		  <div class="textmsgs">
-			  <div class="small bcastmsgs" ng-repeat="msg in bcastmsgs.messageArr | orderByPriority | filter:key">
-				<li> 
-					{{msg.message}}					
-				</li>	
-				<br>
-			  </div>
-		  </div>
-	  </div>
-  </div>
-  <div class="text-left col-md-6">
-    
-    <div class="images clearfix"> 
-        <div class="carousel-container">
-          <div class="caro-img">
-            <img class="img-responsive" src="" />
-            </div>
-            <div class="caro-nav">
-            </div>
-        </div>
-    </div>
-    <iframe width="100%" height="345"
-src="http://www.youtube.com/embed/XGSy3_Czz8k">
-</iframe>
-  </div>  
-</div>
+	  <div class="text-left col-md-6">
+		
+		<div class="images clearfix"> 
+			<div class="carousel-container">
+			  <div class="caro-img">
+				<img class="img-responsive" src="" />
+				</div>
+				<div class="caro-nav">
+				</div>
+			</div>
+		</div>
+		<iframe width="100%" height="345"
+			src="http://www.youtube.com/embed/XGSy3_Czz8k">
+		</iframe>
+	  </div>  
+	</div>
 </div>
 <div class="container">
   <div class="row baby-desc">
