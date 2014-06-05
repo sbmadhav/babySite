@@ -112,7 +112,7 @@
 	  <br>
 	  <div class="text-left headings lead"> Updates </div>
 	  <div class="text-left textmsgs">
-		  <div class="small bcastmsgs" ng-repeat="msg in message.messageArr | orderByPriority | filter:key">
+		  <div class="small bcastmsgs" ng-repeat="msg in message.messageArr | orderByPriority | reverse | filter:key">
 			<li> 		
 				{{msg.message}}								
 			</li>
@@ -143,13 +143,7 @@
 			<div class="item">
 			  <img alt="Fourth slide" src="/images/item-4.png">
 			</div>
-		  </div>
-		  <a class="left carousel-control" href="#carousel-example-generic" data-slide="prev">
-			<span class="glyphicon glyphicon-chevron-left"></span>
-		  </a>
-		  <a class="right carousel-control" href="#carousel-example-generic" data-slide="next">
-			<span class="glyphicon glyphicon-chevron-right"></span>
-		  </a>
+		  </div>		  
 		</div>
 	  </div>  
 	  <br>

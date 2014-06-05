@@ -28,7 +28,7 @@
 	  <div class="col-md-6">
 		<div class="headings lead"> Personal Messages </div>
 		<div class="textmsgs personalmsgs">
-		  <div class="small bcastmsgs" ng-repeat="msg in bcastmsgs.messageArr | orderByPriority | filter:personalKey">
+		  <div class="small bcastmsgs" ng-repeat="msg in bcastmsgs.messageArr | orderByPriority | reverse | filter:personalKey">
 			<li> 
 				{{msg.message}}					
 			</li>	
@@ -37,7 +37,7 @@
 		</div><br>
 		<div class="headings lead"> Updates </div>
 		<div class="text-left textmsgs broadcastmsgs">
-		  <div class="small bcastmsgs" ng-repeat="msg in bcastmsgs.messageArr | orderByPriority | filter:key">
+		  <div class="small bcastmsgs" ng-repeat="msg in bcastmsgs.messageArr | orderByPriority | reverse | filter:key">
 			<li> 
 				{{msg.message}}					
 			</li>	
@@ -68,13 +68,7 @@
 			<div class="item">
 			  <img alt="Fourth slide" src="/images/item-4.png">
 			</div>
-		  </div>
-		  <a class="left carousel-control" href="#carousel-example-generic" data-slide="prev">
-			<span class="glyphicon glyphicon-chevron-left"></span>
-		  </a>
-		  <a class="right carousel-control" href="#carousel-example-generic" data-slide="next">
-			<span class="glyphicon glyphicon-chevron-right"></span>
-		  </a>
+		  </div>		 
 		</div>
 	  </div>  
 	  <br>
