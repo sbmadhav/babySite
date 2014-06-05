@@ -9,10 +9,10 @@ app.controller('AdminController', ['$scope','dataService',function ($scope,dataS
     $scope.admin = dataService.getData('admin');
     $scope.removeAdmin=function(delIndex){
         $scope.admin.adminArr.splice(delIndex,1);
-    }
+    };
     $scope.addMember=function(){
         //$scope.NewMember=$scope.NewMember.reverse();
         $scope.admin.adminArr.push($scope.NewMember);
         $scope.NewMember={};
-    }
+    };
 }]);

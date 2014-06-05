@@ -13,7 +13,7 @@ var app = angular
     $routeProvider
       .when('/', {
         templateUrl: 'views/home.html',
-        controller: 'BroadCastController'
+        controller: 'UsersController'
       })
 	  .when('/Login',{
         templateUrl: 'views/Login.html',
