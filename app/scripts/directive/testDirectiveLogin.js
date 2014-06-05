@@ -54,7 +54,7 @@ directives.directive('testDirective', function($compile, $location) {
 						  // an error occurred while attempting login
 						  console.log(error);
 					  } else if (user) {
-						$.each( scope. user.userArr, function( keyUser, val ) {
+						$.each( scope.user.userArr, function( keyUser, val ) {
 							if (keyUser == "userArr") {
 								$.each( val, function( index,  value) {								
 									$.each( value, function( key,  values) {
@@ -107,7 +107,7 @@ directives.directive('testDirective', function($compile, $location) {
 			  };
 
 			  scope.normalAuth = function() {
-				$.each( scope.user.userArr, function( keyUser, val ) {
+				$.each( scope.user, function( keyUser, val ) {
 					if (keyUser == "userArr") {
 						$.each( val, function( index,  value) {	
 								if (scope.loginUser == value.emailId && scope.loginPwd == value.password) {

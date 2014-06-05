@@ -8,10 +8,9 @@
 
 
 
-app.controller('LoginCtrl', ['$scope', 'Data', 'personalMsgService', 'BroadCastMsgService', function ($scope, Data, service, bCastMsgs) {
+app.controller('LoginCtrl', ['$scope', 'Data', 'dataService', function ($scope, Data, dataService) {
   $scope.Data = Data;
-  $scope.bcastmsgs = bCastMsgs;
-  service.$bind($scope, 'messages');
+  $scope.bcastmsgs = dataService.getData('message');	
   console.log($scope.Data.DisplayName);
   $scope.modalShown = false;
   $scope.toggleModal = function() {

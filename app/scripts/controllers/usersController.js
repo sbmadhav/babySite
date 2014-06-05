@@ -8,7 +8,7 @@
 app.controller('UsersController', ['$scope', 'Data', 'dataService', function ($scope, Data, dataService) {
 	  $scope.key = "NA";
 	  $scope.message = dataService.getData('message');	
-	  $scope.userArr = dataService.getData('user');		  
+	  $scope.user = dataService.getData('user');		  
 	  $scope.Data = Data;
 	  
 	 
