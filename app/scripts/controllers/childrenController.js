@@ -6,9 +6,8 @@
 // Comment below for js hint to ignore issues if any and render the page
 /*global $:false */
 app.controller('ChildrenController', ['$scope','dataService',function ($scope,dataService) {
-    $scope.children = dataService.getData('children');
-    $scope.children.$bind($scope, 'children');
-
+    $scope.childrenFirebase = dataService.getData('children');
+    $scope.childrenFirebase.$bind($scope, 'children');
     $scope.childTopickDrop=[];
     $scope.childGender;
     $scope.changeButtonColor=function(event){

@@ -6,7 +6,8 @@
 // Comment below for js hint to ignore issues if any and render the page
 /*global $:false */
 app.controller('AdminController', ['$scope','dataService',function ($scope,dataService) {
-    $scope.admin = dataService.getData('admin');
+    $scope.adminFirebase = dataService.getData('admin');
+    $scope.adminFirebase.$bind($scope, 'admin');
     $scope.removeAdmin=function(delIndex){
         $scope.admin.adminArr.splice(delIndex,1);
     };
