@@ -11,6 +11,9 @@ app.controller('UsersController', ['$scope', 'Data', 'dataService', function ($s
 	  $scope.user = dataService.getData('user');		  
 	  $scope.Data = Data;
 	  
+	  $('.carousel').carousel({
+             interval: 2000
+	  });
 	 
 	$("marquee").hover(function () { 
 			this.stop();
