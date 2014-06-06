@@ -30,7 +30,7 @@ directives.directive('testDirective', function($compile, $location) {
             });
   
             scope.showRegister = function() {
-				regLoginClicked = true;			
+				//regLoginClicked = true;			
 				$(".popover-content").html(
 					function() {
 						return $compile($("#popover_register").html())(scope);
@@ -39,7 +39,7 @@ directives.directive('testDirective', function($compile, $location) {
 			}		
 			
 			scope.showLogin = function() {
-				regLoginClicked	= true;
+				//regLoginClicked	= true;
 				$(".popover-content").html(
 					function() {
 						return $compile($("#popover_login").html())(scope);
