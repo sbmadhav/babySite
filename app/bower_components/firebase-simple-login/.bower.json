@@ -34,6 +34,6 @@
     "commit": "e4893fda1cae9eb048db26ec31ee81bb3b2f89d9"
   },
   "_source": "git://github.com/firebase/firebase-simple-login.git",
-  "_target": "~1.3.0",
+  "_target": "1.3.2",
   "_originalSource": "firebase-simple-login"
 }
